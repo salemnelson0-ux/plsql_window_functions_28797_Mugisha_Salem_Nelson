@@ -48,7 +48,8 @@ The database contains three related tables:
 - on_time_flag
 - delivery_time
 
-   ER Diagram: See screenshot in project documentation. Relationships: customers (1) → (M) deliveries, routes (1) → (M) deliveries.
+   ER Diagram: See the summarized screenshot in project documentation. Relationships: customers (1) → (M) deliveries, routes (1) → (M) deliveries.
+<img width="590" height="235" alt="image" src="https://github.com/user-attachments/assets/cf689e52-8821-4df5-acee-221a7dacc08e" />
 
 ---
 
