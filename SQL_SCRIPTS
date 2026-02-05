@@ -1,0 +1,64 @@
+
+-- Create customers table
+CREATE TABLE customers (
+    customer_id NUMBER PRIMARY KEY,
+    customer_name VARCHAR2(100),
+    province VARCHAR2(50),
+    customer_segment VARCHAR2(20)
+);
+
+-- Create routes table
+CREATE TABLE routes (
+    route_id NUMBER PRIMARY KEY,
+    route_name VARCHAR2(100),
+    origin_province VARCHAR2(50),
+    destination_province VARCHAR2(50),
+    distance_km NUMBER,
+    average_delivery_time NUMBER
+);
+
+-- Create deliveries table
+CREATE TABLE deliveries (
+    delivery_id NUMBER PRIMARY KEY,
+    customer_id NUMBER,
+    route_id NUMBER,
+    delivery_date DATE,
+    on_time_flag NUMBER(1), -- 1 = on time, 0 = late
+    delivery_time NUMBER, -- in minutes
+    CONSTRAINT fk_customer FOREIGN KEY (customer_id) REFERENCES customers(customer_id),
+    CONSTRAINT fk_route FOREIGN KEY (route_id) REFERENCES routes(route_id)
+);
+
+-- Insert sample data into customers
+INSERT INTO customers VALUES (1, 'John Doe', 'Kigali City', 'Premium');
+INSERT INTO customers VALUES (2, 'Jane Smith', 'Eastern Province', 'Standard');
+INSERT INTO customers VALUES (3, 'Mike Johnson', 'Southern Province', 'Basic');
+INSERT INTO customers VALUES (4, 'Sarah Williams', 'Western Province', 'Premium');
+INSERT INTO customers VALUES (5, 'Tom Brown', 'Northern Province', 'Standard');
+
+-- Insert sample data into routes
+INSERT INTO routes VALUES (101, 'Kigali to Gasabo', 'Kigali City', 'Gasabo', 15, 30);
+INSERT INTO routes VALUES (102, 'Kigali to Nyagatare', 'Kigali City', 'Nyagatare', 45, 60);
+INSERT INTO routes VALUES (103, 'Kigali to Ruhango', 'Kigali City', 'Ruhango', 60, 90);
+INSERT INTO routes VALUES (104, 'Kigali to Gisenyi', 'Kigali City', 'Gisenyi', 75, 120);
+INSERT INTO routes VALUES (105, 'Kigali to Musanze', 'Kigali City', 'Musanze', 80, 150);
+
+-- Insert sample data into deliveries
+INSERT INTO deliveries VALUES (1001, 1, 101, SYSDATE, 1, 25);
+INSERT INTO deliveries VALUES (1002, 2, 102, SYSDATE, 0, 70);
+INSERT INTO deliveries VALUES (1003, 3, 103, SYSDATE, 1, 85);
+INSERT INTO deliveries VALUES (1004, 4, 104, SYSDATE, 1, 110);
+INSERT INTO deliveries VALUES (1005, 5, 105, SYSDATE, 0, 160);
+INSERT INTO deliveries VALUES (1006, 1, 101, SYSDATE - 1, 1, 20);
+INSERT INTO deliveries VALUES (1007, 2, 102, SYSDATE - 1, 0, 65);
+INSERT INTO deliveries VALUES (1008, 3, 103, SYSDATE - 1, 1, 80);
+INSERT INTO deliveries VALUES (1009, 4, 104, SYSDATE - 1, 1, 105);
+INSERT INTO deliveries VALUES (1010, 5, 105, SYSDATE - 1, 0, 140);
+
+-- Commit changes
+COMMIT;
+
+-- Verify data
+SELECT * FROM customers;
+SELECT * FROM routes;
+SELECT * FROM deliveries;
