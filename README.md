@@ -1,6 +1,6 @@
 plsql_window_functions_28797_Mugisha_Salem_Nelson
 
-ForwardDelivery Inc. - SQL Window Functions Project
+ForwardDelivery Inc. - SQL Windows Functions Project
 
  # Project Overview
 
