@@ -2,7 +2,7 @@
 PLSQL-Window Functions Assignment
 NAME:Mugisha Salem Nelson
 ID: 28797
-DATE:29/9/2025
+DATE:08/02/2026
 =====================================
 -- Create customers table
 CREATE TABLE customers (
@@ -480,4 +480,6 @@ ORDER BY total_deliveries DESC;
 -- Interpretation:
 -- Combines quartile segmentation with cumulative distribution for comprehensive customer analysis.
 -- Shows both the customer's quartile group and their exact position in the overall distribution.
+
+end
 
